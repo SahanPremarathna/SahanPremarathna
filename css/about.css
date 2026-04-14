@@ -1,0 +1,113 @@
+/* ─────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────── */
+.about {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ── Image ── */
+.about__image-wrap { position: relative; }
+
+.about__img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  height: 460px;
+  border: 1px solid var(--border);
+  filter: grayscale(25%) contrast(1.05);
+}
+
+.about__img-badge {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  background: rgba(0, 255, 136, 0.9);
+  color: #060910;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: .82rem;
+  font-weight: 700;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #060910;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── Text ── */
+.about__text h2 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -.5px;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+.about__text p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-size: .97rem;
+}
+
+/* ── Inline terminal ── */
+.about__terminal {
+  background: #020405;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 28px 0;
+  font-family: 'Fira Code', monospace;
+  font-size: .82rem;
+}
+.about__terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-card-2);
+  border-bottom: 1px solid var(--border);
+}
+.about__terminal-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.about__terminal-body p { color: var(--text-muted); }
+.about__terminal-body p:first-child { color: var(--text); margin-bottom: 4px; }
+
+/* ── Stats row ── */
+.about__stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-dim);
+}
+.stat__num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'Fira Code', monospace;
+  color: var(--accent);
+}
+.stat__lbl {
+  font-size: .78rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 2px;
+}

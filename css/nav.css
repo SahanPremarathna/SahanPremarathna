@@ -1,0 +1,64 @@
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  height: 64px;
+  background: rgba(6, 9, 16, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s;
+}
+.nav.scrolled { background: rgba(6, 9, 16, 0.97); }
+
+.nav__logo {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-right: auto;
+}
+.nav__logo-bracket { color: var(--text-muted); }
+.nav__logo-cursor  {
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+.nav__links {
+  display: flex;
+  gap: 32px;
+  margin-right: 32px;
+}
+.nav__links a {
+  font-family: 'Fira Code', monospace;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color .2s;
+}
+.nav__links a:hover { color: var(--accent); }
+
+.nav__cta { padding: 7px 18px; font-size: .82rem; }
+
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav__burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}

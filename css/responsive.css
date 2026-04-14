@@ -1,0 +1,56 @@
+/* ─────────────────────────────────────────
+   RESPONSIVE — BREAKPOINTS
+───────────────────────────────────────── */
+
+/* ── Tablet / small desktop ── */
+@media (max-width: 960px) {
+
+  /* Hero */
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 100px 24px 60px;
+  }
+  .hero__visual      { width: 100%; }
+  .avatar-wrap       { width: 240px; height: 240px; }
+  .badge--exp        { left: 0; }
+  .hero__actions,
+  .hero__socials     { justify-content: center; }
+  .hero__desc        { margin: 0 auto 36px; }
+  .hero__terminal-bar{ margin: 0 auto -1px; }
+  .hero__typewriter  { justify-content: center; }
+
+  /* About */
+  .about__grid  { grid-template-columns: 1fr; }
+  .about__img   { height: 300px; }
+  .about__stats { gap: 24px; }
+
+  /* Projects */
+  .projects__grid { grid-template-columns: 1fr; }
+  .project-card--featured {
+    grid-column: span 1;
+    display: block;
+  }
+  .project-card--featured .project-card__img-wrap { height: 210px; }
+
+  /* Contact */
+  .contact__grid { grid-template-columns: 1fr; }
+  .form-row      { grid-template-columns: 1fr; }
+
+  /* Nav */
+  .nav           { padding: 0 20px; }
+  .nav__links,
+  .nav__cta      { display: none; }
+  .nav__burger   { display: flex; }
+
+  /* Footer */
+  .footer__inner { flex-direction: column; text-align: center; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .hero__name   { letter-spacing: -2px; }
+  .section      { padding: 72px 0; }
+  .about__stats { flex-wrap: wrap; }
+  .certs__grid  { grid-template-columns: 1fr; }
+}

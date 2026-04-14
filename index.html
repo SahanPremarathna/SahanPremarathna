@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahan Premarathna // ULTRA</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- CSS modules -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/classified.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/certs.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ─── TOKEN BADGE (top-right countdown) ─── -->
+  <div id="token-badge">
+    <span class="badge-dot"></span>
+    TOKEN&nbsp;<span id="badge-time">00:30</span>
+  </div>
+
+  <!-- ─── LOGIN OVERLAY ─── -->
+  <div id="login-overlay" style="display:none; opacity:0; pointer-events:none;">
+
+    <!-- Boot log -->
+    <div class="login-boot" aria-hidden="true">
+      <span>[ BOOT ] ULTRA-SEC TERMINAL v4.2.1 ... OK</span>
+      <span>[ SYS  ] Kernel modules loaded</span>
+      <span>[ NET  ] Establishing encrypted tunnel ... OK</span>
+      <span>[ AUTH ] Session token required</span>
+      <span>[ WARN ] All access attempts are forensically logged</span>
+    </div>
+
+    <!-- Top-left corner label -->
+    <div class="login-corner login-corner--tl" aria-hidden="true">
+      ULTRA-SEC / AUTH-GATE<br>
+      NODE: SL-ALPHA-7<br>
+      PROTO: TLS 1.3
+    </div>
+
+    <!-- Bottom-right corner label -->
+    <div class="login-corner login-corner--br" aria-hidden="true">
+      CASE REF: [████-████]<br>
+      IP LOGGED &amp; TRACED<br>
+      CLEARANCE LVL: CLASSIFIED
+    </div>
+
+    <!-- Main card -->
+    <div class="login-card" role="dialog" aria-modal="true" aria-label="Authentication required">
+
+      <!-- Title bar -->
+      <div class="login-card__bar">
+        <span class="login-card__bar-dot login-card__bar-dot--red"></span>
+        <span class="login-card__bar-dot login-card__bar-dot--yellow"></span>
+        <span class="login-card__bar-dot login-card__bar-dot--green"></span>
+        <span class="login-card__bar-title">ultra-sec :: auth-terminal</span>
+        <span class="login-card__bar-status" id="login-bar-status">LOCKED</span>
+      </div>
+
+      <!-- Body -->
+      <div class="login-card__body">
+
+        <!-- System name -->
+        <div class="login-sys">
+          <div class="login-sys__label">// SYSTEM IDENTIFICATION</div>
+          <div class="login-sys__name">ULTRA-SEC</div>
+          <div class="login-sys__sub">spremarathna@ALPHA &nbsp;|&nbsp; clearance required</div>
+        </div>
+
+        <!-- Token expired alert (hidden by default) -->
+        <div class="login-expired" id="login-expired" role="alert">
+          <span class="login-expired__icon">⚠</span>
+          <span>SESSION TOKEN EXPIRED — Re-authentication required. All activity has been flagged.</span>
+        </div>
+
+        <!-- Terminal prompt lines -->
+        <div class="login-prompt" aria-hidden="true">
+          <span><span class="acc">$</span> whoami &nbsp;<span class="dim">→ unknown_entity</span></span>
+          <span><span class="acc">$</span> request-access --node SL-ALPHA-7</span>
+          <span><span class="warn">! ACCESS DENIED — provide valid session token</span></span>
+        </div>
+
+        <!-- Form -->
+        <form class="login-form" id="login-form" novalidate>
+
+          <!-- Operator field (prefilled, read-only) -->
+          <div class="login-field">
+            <label class="login-field__label" for="login-user">// OPERATOR ID</label>
+            <div class="login-field__row">
+              <span class="login-field__prompt">$</span>
+              <input
+                class="login-field__input"
+                id="login-user"
+                type="text"
+                value="spremarathna"
+                readonly
+                aria-label="Operator ID"
+              />
+            </div>
+          </div>
+
+          <!-- Token field -->
+          <div class="login-field">
+            <label class="login-field__label" for="login-token">// ACCESS TOKEN</label>
+            <div class="login-field__row">
+              <span class="login-field__prompt">&gt;</span>
+              <input
+                class="login-field__input"
+                id="login-token"
+                type="password"
+                placeholder="enter access token..."
+                autocomplete="off"
+                spellcheck="false"
+                aria-label="Access token"
+                aria-describedby="login-error login-hint"
+              />
+              <button type="button" class="login-reveal" id="login-reveal" aria-label="Toggle token visibility" title="Reveal / hide token">
+                <!-- eye-off (default: password hidden) -->
+                <svg id="reveal-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                  <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                  <line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+                <!-- eye (shown when revealed) -->
+                <svg id="reveal-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="display:none">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <div class="login-error" id="login-error" role="alert">
+              ✗ INVALID TOKEN — Access denied. Attempt logged.
+            </div>
+          </div>
+
+          <!-- Hint -->
+          <div class="login-hint" id="login-hint">
+            <span class="h-acc">// INTEL FRAGMENT — DECLASSIFIED</span><br>
+            Token pre-loaded from operative record.<br>
+            <span class="h-key">ACCESS TOKEN: ULTRA</span>
+            &nbsp;— Press <span class="h-acc">AUTHENTICATE</span> to proceed.
+          </div>
+
+          <button type="submit" class="login-submit" id="login-submit">
+            &gt; AUTHENTICATE
+          </button>
+
+        </form>
+
+      </div><!-- /body -->
+
+      <!-- Footer -->
+      <div class="login-footer">
+        <span>ULTRA-SEC AUTH GATEWAY v4.2.1</span>
+        <span class="f-warn">⚠ UNAUTHORISED ACCESS IS A CRIMINAL OFFENCE</span>
+      </div>
+
+    </div><!-- /card -->
+  </div><!-- /overlay -->
+
+  <!-- ─── MATRIX RAIN ─── -->
+  <canvas id="matrix" class="matrix-canvas"></canvas>
+
+  <!-- ─── ACCESS WARNING BANNER ─── -->
+  <div class="access-banner" id="access-banner">
+    <span class="access-banner__dot"></span>
+    <span>WARNING — AUTHORISED PERSONNEL ONLY &nbsp;|&nbsp; ALL ACCESS ATTEMPTS ARE LOGGED &nbsp;|&nbsp; CASE REF: <span class="acc-ref" id="acc-ref"></span></span>
+    <button class="access-banner__close" onclick="document.getElementById('access-banner').style.display='none'" aria-label="Dismiss">✕</button>
+  </div>
+
+  <!-- ─── NAV ─── -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <span class="nav__logo-bracket">[</span>spremarathna<span class="accent">@</span>ULTRA<span class="nav__logo-bracket">]</span><span class="nav__logo-cursor">_</span>
+    </div>
+    <ul class="nav__links">
+      <li><a href="#about">/dossier</a></li>
+      <li><a href="#skills">/capabilities</a></li>
+      <li><a href="#projects">/operations</a></li>
+      <li><a href="#certs">/credentials</a></li>
+      <li><a href="#contact">/dead-drop</a></li>
+    </ul>
+    <button class="btn btn--primary nav__cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Secure Channel
+    </button>
+    <button class="nav__burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="scan-line"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__terminal-bar">
+        <span class="terminal-dot dot--red"></span>
+        <span class="terminal-dot dot--yellow"></span>
+        <span class="terminal-dot dot--green"></span>
+        <span class="terminal-title">ssh ultra@██████.onion — bash</span>
+      </div>
+
+      <p class="hero__tag"><span class="prompt">root@kali:~#</span> cat /etc/operative</p>
+      <h1 class="hero__name">Sahan <span class="hero__name-last">Premarathna</span></h1>
+
+      <div class="hero__codename">
+        <span class="codename__label">handle</span>
+        <span class="codename__value">ULTRA</span>
+        <span class="codename__sep">|</span>
+        <span class="codename__label">clearance</span>
+        <span class="codename__value" style="color:var(--accent-2)">LVL-3</span>
+      </div>
+
+      <div class="hero__typewriter">
+        <span class="prompt-inline">$</span>&nbsp;<span class="typewriter" id="typewriter"></span><span class="cursor">▊</span>
+      </div>
+
+      <p class="hero__desc">
+        Operative specialising in offensive security &amp; infrastructure penetration.
+        Currently embedded at <span class="highlight">Sampath Bank</span> as Security Intern —
+        threat modelling, vulnerability assessment &amp; incident response.
+        Active on CTF circuits under handle <span class="highlight">ULTRA</span>.
+      </p>
+
+      <div class="hero__meta">
+        <span class="meta-item"><span class="meta-label">LOC</span> <span class="redacted-sm" title="Find me if you can">██████████████</span></span>
+        <span class="meta-item"><span class="meta-label">STATUS</span> <span style="color:var(--accent)">● ONLINE</span></span>
+        <span class="meta-item"><span class="meta-label">PGP</span> <span class="redacted-sm">████████████</span></span>
+      </div>
+
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          View Operations
+        </a>
+        <a href="#" class="btn btn--ghost" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Extract CV
+        </a>
+      </div>
+
+      <div class="hero__socials">
+        <a href="#" aria-label="GitHub" class="social-icon" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.43 7.88 10.96.58.1.79-.25.79-.56v-2.1c-3.2.7-3.87-1.54-3.87-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.1 11.1 0 0 1 2.89-.39c.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="social-icon" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.56V9H3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a href="#" aria-label="TryHackMe" class="social-icon" title="TryHackMe">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.705 0C7.54 0 4.902 2.285 4.374 5.31A4.236 4.236 0 0 0 2.118 9.53a4.232 4.232 0 0 0 2.554 3.861A5.294 5.294 0 0 0 9.882 17.6h4.236a5.294 5.294 0 0 0 5.21-4.21 4.232 4.232 0 0 0 2.554-3.86 4.236 4.236 0 0 0-2.256-3.743C19.098 2.285 16.46 0 13.295 0h-2.59z"/></svg>
+        </a>
+        <a href="#" aria-label="HackTheBox" class="social-icon" title="HackTheBox">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0L3 4.796v9.407l.001.048L11.998 19l8.998-4.75V4.795L11.996 0zm0 1.155l7.94 4.192v8.307l-7.94 4.192-7.94-4.192V5.347l7.94-4.192zM9.06 7.072L6.708 8.43v2.717l2.352 1.357 2.352-1.357V8.43L9.06 7.072zm5.88 0l-2.352 1.357v2.717l2.352 1.357 2.352-1.357V8.43l-2.352-1.357z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="avatar-wrap">
+        <img src="https://picsum.photos/seed/hacker1/500/500" alt="[REDACTED]" class="avatar" />
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring avatar-ring--2"></div>
+        <div class="avatar-classified">CLASSIFIED</div>
+      </div>
+      <div class="badge badge--exp">
+        <span class="badge__icon">🏦</span>
+        <div>
+          <span class="badge__num">Sampath</span>
+          <span class="badge__txt">Sec. Intern</span>
+        </div>
+      </div>
+      <div class="badge badge--proj">
+        <span class="badge__icon">⚡</span>
+        <div>
+          <span class="badge__num">ULTRA</span>
+          <span class="badge__txt">Active Handle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT / DOSSIER ─── -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">// PERSONNEL FILE — CASE #2024-LK-██</div>
+      <div class="about__grid">
+        <div class="about__image-wrap">
+          <img src="https://picsum.photos/seed/cyberdesk/600/700" alt="[IDENTITY PROTECTED]" class="about__img" />
+          <div class="about__img-badge">
+            <span class="status-dot"></span>
+            Available for Deployment
+          </div>
+          <div class="dossier-stamp">ACTIVE OPERATIVE</div>
+        </div>
+
+        <div class="about__text">
+          <div class="dossier-header">
+            <span class="dossier-header__label">SUBJECT</span>
+            <span class="dossier-header__sep">//</span>
+            <span class="dossier-header__name">Sahan Premarathna</span>
+            <span class="dossier-header__sep">//</span>
+            <span class="dossier-header__handle">ULTRA</span>
+            <span class="clearance-badge">CLEARANCE LVL-3</span>
+          </div>
+
+          <p>
+            Operative with expertise in offensive security and vulnerability research.
+            Real identity known to <span class="redacted-inline">███████ ████████</span> only.
+            Currently embedded within <span class="highlight">Sampath Bank's Security Division</span>,
+            conducting threat assessments on critical financial infrastructure.
+          </p>
+          <p>
+            Known to operate across CTF platforms under handle <span class="highlight">ULTRA</span>.
+            Specialises in network infiltration, web application exploitation, and social engineering
+            simulations. Last confirmed location: <span class="redacted" data-reveal="[TRACK ME]" title="Location undisclosed — find me if you can">████████████</span>.
+          </p>
+
+          <div class="about__terminal">
+            <div class="about__terminal-header">
+              <span class="terminal-dot dot--red"></span>
+              <span class="terminal-dot dot--yellow"></span>
+              <span class="terminal-dot dot--green"></span>
+              <span style="font-size:.75rem;color:var(--text-muted);margin-left:8px;">operative_profile.db — READ ONLY</span>
+            </div>
+            <div class="about__terminal-body">
+              <p><span class="prompt-inline">$</span> <span class="cmd">SELECT</span> * FROM operatives WHERE handle='ULTRA';</p>
+              <p><span class="out-key">handle</span>    <span class="out-arrow">=&gt;</span> ULTRA</p>
+              <p><span class="out-key">role</span>      <span class="out-arrow">=&gt;</span> Security Intern @ Sampath Bank</p>
+              <p><span class="out-key">mission</span>   <span class="out-arrow">=&gt;</span> Ethical Hacking &amp; Penetration Testing</p>
+              <p><span class="out-key">platforms</span> <span class="out-arrow">=&gt;</span> TryHackMe | HackTheBox | CTFtime</p>
+              <p><span class="out-key">os</span>        <span class="out-arrow">=&gt;</span> Kali Linux (primary) / Parrot OS</p>
+              <p><span class="out-key">pgp_key</span>   <span class="out-arrow">=&gt;</span> <span class="redacted-sm">████████████████████████</span></p>
+            </div>
+          </div>
+
+          <div class="about__stats">
+            <div class="stat">
+              <span class="stat__num">10+</span>
+              <span class="stat__lbl">CTFs Pwned</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">50+</span>
+              <span class="stat__lbl">THM Rooms</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">1+</span>
+              <span class="stat__lbl">Yr. Embedded</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS / CAPABILITIES ─── -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-label">// KNOWN CAPABILITIES — THREAT ASSESSMENT</div>
+      <h2 class="section-title">Offensive &amp; Defensive Arsenal</h2>
+      <div class="skills__grid">
+
+        <div class="skill-card">
+          <div class="skill-card__icon" style="background:rgba(0,255,136,.08);border-color:rgba(0,255,136,.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="skill-card__threat">THREAT LVL <span>HIGH</span></div>
+          <h3>Network Intrusion</h3>
+          <ul>
+            <li>Nmap / Masscan</li>
+            <li>Wireshark / tcpdump</li>
+            <li>Metasploit Framework</li>
+            <li>Nessus / OpenVAS</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon" style="background:rgba(56,189,248,.08);border-color:rgba(56,189,248,.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="skill-card__threat">THREAT LVL <span>HIGH</span></div>
+          <h3>Web App Exploitation</h3>
+          <ul>
+            <li>Burp Suite Pro</li>
+            <li>OWASP Top 10</li>
+            <li>SQLmap / XSStrike</li>
+            <li>Nikto / Gobuster</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon" style="background:rgba(251,146,60,.08);border-color:rgba(251,146,60,.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="skill-card__threat">THREAT LVL <span style="color:#fb923c">MED</span></div>
+          <h3>OS &amp; Evasion</h3>
+          <ul>
+            <li>Kali Linux</li>
+            <li>Parrot OS</li>
+            <li>Windows AD Attacks</li>
+            <li>Bash / PowerShell</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon" style="background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="skill-card__threat">THREAT LVL <span>HIGH</span></div>
+          <h3>OSINT &amp; Recon</h3>
+          <ul>
+            <li>Maltego / theHarvester</li>
+            <li>Shodan / Censys</li>
+            <li>Recon-ng</li>
+            <li>OSINT Framework</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon" style="background:rgba(244,63,94,.08);border-color:rgba(244,63,94,.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="skill-card__threat">THREAT LVL <span style="color:#fb923c">MED</span></div>
+          <h3>Exploit Dev</h3>
+          <ul>
+            <li>Python (exploit dev)</li>
+            <li>Bash scripting</li>
+            <li>PowerShell</li>
+            <li>C / Assembly (basics)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon" style="background:rgba(20,184,166,.08);border-color:rgba(20,184,166,.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="skill-card__threat">THREAT LVL <span style="color:#38bdf8">DEF</span></div>
+          <h3>SIEM &amp; Forensics</h3>
+          <ul>
+            <li>Splunk / ELK Stack</li>
+            <li>Snort / Suricata IDS</li>
+            <li>Log Analysis</li>
+            <li>Incident Response</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJECTS / OPERATIONS ─── -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label">// OPERATION LOG — AUTHORISED DISCLOSURE ONLY</div>
+      <h2 class="section-title">Filed Operations</h2>
+      <div class="projects__grid">
+
+        <article class="project-card project-card--featured">
+          <div class="project-card__img-wrap">
+            <img src="https://picsum.photos/seed/network-sec/800/500" alt="[REDACTED]" />
+            <div class="project-card__overlay">
+              <a href="#" class="btn btn--sm">Debrief</a>
+              <a href="#" class="btn btn--sm btn--ghost">Source</a>
+            </div>
+            <div class="op-badge">OP: IRON DOMAIN</div>
+          </div>
+          <div class="project-card__body">
+            <div class="op-meta">
+              <span class="op-meta__id">CASE-001</span>
+              <span class="op-meta__status op-meta__status--complete">COMPLETE</span>
+            </div>
+            <div class="project-card__tags">
+              <span>Network Pentesting</span><span>Active Directory</span><span>Kali Linux</span>
+            </div>
+            <h3>Home Pentest Lab — AD Attack Chain</h3>
+            <p>Full Active Directory kill chain in VMware: LLMNR poisoning → Pass-the-Hash → Kerberoasting → Domain Admin. Full documentation with mitigations filed post-operation.</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__img-wrap">
+            <img src="https://picsum.photos/seed/webapp-vuln/800/500" alt="[REDACTED]" />
+            <div class="project-card__overlay">
+              <a href="#" class="btn btn--sm">Debrief</a>
+              <a href="#" class="btn btn--sm btn--ghost">Source</a>
+            </div>
+            <div class="op-badge">OP: SPIDER WEB</div>
+          </div>
+          <div class="project-card__body">
+            <div class="op-meta">
+              <span class="op-meta__id">CASE-002</span>
+              <span class="op-meta__status op-meta__status--complete">COMPLETE</span>
+            </div>
+            <div class="project-card__tags">
+              <span>Burp Suite</span><span>OWASP</span><span>Python</span>
+            </div>
+            <h3>Web Vulnerability Scanner</h3>
+            <p>Custom Python tool automating detection of SQLi, XSS, and IDOR. Modular plugin architecture. Deployed against authorised test targets.</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__img-wrap">
+            <img src="https://picsum.photos/seed/ctf-solve/800/500" alt="[REDACTED]" />
+            <div class="project-card__overlay">
+              <a href="#" class="btn btn--sm">Debrief</a>
+              <a href="#" class="btn btn--sm btn--ghost">Source</a>
+            </div>
+            <div class="op-badge">OP: FLAG HUNT</div>
+          </div>
+          <div class="project-card__body">
+            <div class="op-meta">
+              <span class="op-meta__id">CASE-003</span>
+              <span class="op-meta__status op-meta__status--active">ONGOING</span>
+            </div>
+            <div class="project-card__tags">
+              <span>CTF</span><span>TryHackMe</span><span>HackTheBox</span>
+            </div>
+            <h3>CTF Intelligence Archive</h3>
+            <p>10+ documented CTF solutions — reverse engineering, forensics, crypto, and web exploitation. Declassified and published for community knowledge.</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__img-wrap">
+            <img src="https://picsum.photos/seed/phishing-sim/800/500" alt="[REDACTED]" />
+            <div class="project-card__overlay">
+              <a href="#" class="btn btn--sm">Debrief</a>
+              <a href="#" class="btn btn--sm btn--ghost">Source</a>
+            </div>
+            <div class="op-badge">OP: SOCIAL GHOST</div>
+          </div>
+          <div class="project-card__body">
+            <div class="op-meta">
+              <span class="op-meta__id">CASE-004</span>
+              <span class="op-meta__status op-meta__status--complete">COMPLETE</span>
+            </div>
+            <div class="project-card__tags">
+              <span>Social Engineering</span><span>GoPhish</span><span>Awareness</span>
+            </div>
+            <h3>Phishing Simulation Campaign</h3>
+            <p>Controlled phishing operation via GoPhish. Objective: measure human vulnerability in target org. Full post-op report with security hardening recommendations delivered.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CERTIFICATIONS / CREDENTIALS ─── -->
+  <section class="certs section" id="certs">
+    <div class="container">
+      <div class="section-label">// VERIFIED CREDENTIALS — AUTHENTICITY ON FILE</div>
+      <h2 class="section-title">Clearance &amp; Certifications</h2>
+      <div class="certs__grid">
+
+        <div class="cert-card cert-card--active">
+          <div class="cert-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="cert-card__info">
+            <span class="cert-card__issuer">CompTIA</span>
+            <h3>Security+</h3>
+            <span class="cert-card__status cert-card__status--progress">In Progress</span>
+          </div>
+        </div>
+
+        <div class="cert-card cert-card--active">
+          <div class="cert-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="cert-card__info">
+            <span class="cert-card__issuer">TryHackMe</span>
+            <h3>Jr Penetration Tester</h3>
+            <span class="cert-card__status cert-card__status--done">Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="cert-card__info">
+            <span class="cert-card__issuer">eLearnSecurity</span>
+            <h3>eJPT</h3>
+            <span class="cert-card__status cert-card__status--progress">In Progress</span>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="cert-card__info">
+            <span class="cert-card__issuer">Cisco</span>
+            <h3>CCNA (Networking)</h3>
+            <span class="cert-card__status cert-card__status--done">Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="cert-card__info">
+            <span class="cert-card__issuer">Google</span>
+            <h3>Cybersecurity Certificate</h3>
+            <span class="cert-card__status cert-card__status--done">Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-card cert-card--goal">
+          <div class="cert-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="cert-card__info">
+            <span class="cert-card__issuer">Offensive Security</span>
+            <h3>OSCP</h3>
+            <span class="cert-card__status cert-card__status--goal">Target: 2025</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT / DEAD DROP ─── -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label">// DEAD DROP — ENCRYPTED CHANNEL</div>
+      <h2 class="section-title">Establish Secure Contact</h2>
+      <div class="contact__grid">
+        <div class="contact__info">
+          <div class="contact__warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            All transmissions are monitored. Use encrypted channels where possible.
+          </div>
+          <p>
+            Operative <span class="highlight">ULTRA</span> accepts contact for vetted security
+            engagements, collaboration, and authorised research. Unknown parties will be verified
+            before any sensitive exchange.
+          </p>
+          <div class="contact__items">
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span>sahan@example.com</span>
+            </div>
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <span class="redacted-inline" title="Location undisclosed — track me if you can">████████████████████████</span>
+            </div>
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <span>Sampath Bank — Security Division</span>
+            </div>
+            <div class="contact__item">
+              <div class="contact__item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <span class="redacted-inline">PGP KEY: ██████████████████</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact__form" id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="contact__form-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            SECURE MESSAGE — END-TO-END ENCRYPTED
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">// IDENTITY</label>
+              <input type="text" id="name" name="name" placeholder="Your handle or name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">// CHANNEL</label>
+              <input type="email" id="email" name="email" placeholder="Secure email address" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">// SUBJECT CLASSIFICATION</label>
+            <input type="text" id="subject" name="subject" placeholder="e.g. Engagement request, collaboration..." required />
+          </div>
+          <div class="form-group">
+            <label for="message">// TRANSMISSION</label>
+            <textarea id="message" name="message" rows="5" placeholder="Compose your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Transmit Encrypted
+          </button>
+          <div class="form-success" id="form-success">✓ TRANSMISSION RECEIVED — Response ETA: 24–48h</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__brand"><span class="nav__logo-bracket">[</span>spremarathna<span class="accent">@</span>ULTRA<span class="nav__logo-bracket">]</span></p>
+        <p class="footer__copy">
+          <span class="prompt-inline">$</span> echo "This site self-destructs after unauthorised access. &copy; 2026"
+        </p>
+        <div class="footer__socials">
+          <a href="#" aria-label="GitHub" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.43 7.88 10.96.58.1.79-.25.79-.56v-2.1c-3.2.7-3.87-1.54-3.87-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.1 11.1 0 0 1 2.89-.39c.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.56V9H3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS modules -->
+  <script src="js/login.js"></script>
+  <script src="js/matrix.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/glitch.js"></script>
+  <script src="js/classified.js"></script>
+</body>
+</html>

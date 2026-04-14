@@ -1,0 +1,30 @@
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer__brand {
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer__copy {
+  font-family: 'Fira Code', monospace;
+  font-size: .75rem;
+  color: var(--text-muted);
+}
+
+.footer__socials { display: flex; gap: 10px; }

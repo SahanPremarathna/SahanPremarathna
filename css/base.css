@@ -1,0 +1,113 @@
+/* ─────────────────────────────────────────
+   BASE — Utilities, Buttons, Social Icons
+───────────────────────────────────────── */
+
+/* ── Utilities ── */
+.accent    { color: var(--accent); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+.highlight {
+  color: var(--accent);
+  background: rgba(0, 255, 136, 0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Terminal text helpers */
+.prompt        { color: var(--accent); font-family: 'Fira Code', monospace; font-size: .88rem; }
+.prompt-inline { color: var(--accent); font-family: 'Fira Code', monospace; font-size: .9rem; }
+.cmd           { color: #38bdf8; }
+.out-key       { color: var(--accent); font-family: 'Fira Code', monospace; display: inline-block; min-width: 90px; }
+.out-arrow     { color: var(--text-muted); margin: 0 6px; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: .92rem;
+  font-family: 'Fira Code', monospace;
+  cursor: pointer;
+  border: none;
+  transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #060910;
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+}
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 255, 136, 0.5);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--glow);
+}
+
+.btn--sm   { padding: 7px 16px; font-size: .8rem; }
+.btn--full { width: 100%; justify-content: center; }
+
+/* ── Social Icons ── */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-dim);
+  color: var(--text-muted);
+  transition: border-color .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.social-icon svg   { width: 17px; height: 17px; }
+.social-icon:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--glow);
+}
+
+/* ── Section shared ── */
+.section { padding: 100px 0; }
+
+.section-label {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: .78rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+  background: var(--accent-dim);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 52px;
+  color: var(--text);
+}
+
+/* ── Matrix canvas ── */
+.matrix-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .07;
+}

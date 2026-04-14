@@ -1,0 +1,80 @@
+/* ─────────────────────────────────────────
+   CERTIFICATIONS
+───────────────────────────────────────── */
+.certs__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 10px;
+  padding: 22px 20px;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.cert-card:hover {
+  border-color: var(--border);
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}
+
+.cert-card--active { border-color: var(--border); }
+.cert-card--goal   { border-style: dashed; }
+
+/* ── Logo icon ── */
+.cert-card__logo {
+  width: 52px; height: 52px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+}
+
+/* ── Info ── */
+.cert-card__info { flex: 1; }
+
+.cert-card__issuer {
+  font-family: 'Fira Code', monospace;
+  font-size: .72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.cert-card__info h3 {
+  font-size: .98rem;
+  font-weight: 700;
+  margin: 4px 0 8px;
+}
+
+/* ── Status pills ── */
+.cert-card__status {
+  font-family: 'Fira Code', monospace;
+  font-size: .7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.cert-card__status--done {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+}
+.cert-card__status--progress {
+  background: rgba(0, 200, 255, 0.1);
+  color: var(--accent-2);
+  border: 1px solid rgba(0, 200, 255, 0.25);
+}
+.cert-card__status--goal {
+  background: rgba(251, 146, 60, 0.1);
+  color: #fb923c;
+  border: 1px solid rgba(251, 146, 60, 0.25);
+}

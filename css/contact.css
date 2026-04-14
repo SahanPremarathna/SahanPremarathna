@@ -1,0 +1,87 @@
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Info column ── */
+.contact__info p {
+  color: var(--text-muted);
+  font-size: .97rem;
+  margin-bottom: 32px;
+  line-height: 1.75;
+}
+
+.contact__items { display: flex; flex-direction: column; gap: 14px; }
+
+.contact__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+.contact__item-icon {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.contact__item-icon svg { width: 17px; height: 17px; }
+
+/* ── Form ── */
+.contact__form { display: flex; flex-direction: column; gap: 18px; }
+.form-row      { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group    { display: flex; flex-direction: column; gap: 6px; }
+
+.form-group label {
+  font-family: 'Fira Code', monospace;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-dim);
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  resize: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: .5;
+  font-size: .87rem;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+  font-size: .85rem;
+  color: var(--accent);
+  padding: 12px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}

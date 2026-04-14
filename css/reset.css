@@ -1,0 +1,38 @@
+/* ─────────────────────────────────────────
+   RESET & CSS VARIABLES
+───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent:      #00ff88;
+  --accent-2:    #00c8ff;
+  --accent-dim:  rgba(0, 255, 136, 0.12);
+  --bg:          #060910;
+  --bg-card:     #0c1018;
+  --bg-card-2:   #111720;
+  --border:      rgba(0, 255, 136, 0.1);
+  --border-dim:  rgba(255, 255, 255, 0.06);
+  --text:        #d4e8d4;
+  --text-muted:  #5a7a5a;
+  --radius:      10px;
+  --shadow:      0 8px 32px rgba(0, 0, 0, 0.6);
+  --glow:        0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; }
