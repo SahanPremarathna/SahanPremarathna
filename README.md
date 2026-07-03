@@ -108,17 +108,25 @@ When coding and Linux have fully drained the battery, I am usually away from the
 <table>
   <tr>
     <td width="50%">
+      <h3>Cybersecurity Lab</h3>
+      <p>Security practice, Linux work, CTF learning, Hack The Box, and lab-based research.</p>
       <img width="100%" src="assets/gallery/labs.jpg" alt="Cybersecurity lab setup" />
     </td>
     <td width="50%">
+      <h3>Code &amp; Web Builds</h3>
+      <p>Programming, website development, interfaces, scripts, and practical build experiments.</p>
       <img width="100%" src="assets/gallery/code-web-builds.svg" alt="Programming and web development gallery placeholder" />
     </td>
   </tr>
   <tr>
     <td width="50%">
+      <h3>Prompt Engineering</h3>
+      <p>AI-assisted workflows for coding, research, automation, planning, and faster execution.</p>
       <img width="100%" src="assets/gallery/prompteng.jpeg" alt="Prompt engineering workspace" />
     </td>
     <td width="50%">
+      <h3>Wildlife Filmmaking</h3>
+      <p>Forest time, field footage, wildlife storytelling, and Fly Free Productions.</p>
       <img width="100%" src="assets/gallery/leopards.jfif" alt="Leopards wildlife photography" />
     </td>
   </tr>
