@@ -3,10 +3,6 @@
 
   Replace these placeholders before publishing:
   - YOUR_GITHUB_USERNAME
-  - YOUR_LINKEDIN_USERNAME
-  - YOUR_YOUTUBE_HANDLE
-  - YOUR_PORTFOLIO_WEBSITE
-  - your.email@example.com
   - Gallery image URLs
   - Featured project repository links
 -->
@@ -163,33 +159,6 @@ When coding and Linux have fully drained the battery, I am usually away from the
   </tr>
 </table>
 
-## GitHub Signal
-
-<div align="center">
-
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=dark&hide_border=true&bg_color=020617&title_color=22c55e&icon_color=14b8a6&text_color=cbd5e1" alt="GitHub stats for Sahan Premarathna" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=dark&hide_border=true&bg_color=020617&title_color=22c55e&text_color=cbd5e1" alt="Top languages for Sahan Premarathna" />
-
-  <br />
-
-  <img src="https://streak-stats.demolab.com?user=YOUR_GITHUB_USERNAME&theme=dark&hide_border=true&background=020617&ring=22c55e&fire=14b8a6&currStreakLabel=22c55e&sideLabels=cbd5e1&currStreakNum=e2e8f0&sideNums=e2e8f0&dates=94a3b8" alt="GitHub streak stats for Sahan Premarathna" />
-
-</div>
-
-## Contribution Map
-
-<!-- The workflow in .github/workflows/snake.yml generates this SVG automatically after you replace YOUR_GITHUB_USERNAME there too. -->
-
-<div align="center">
-
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-contribution-grid-snake.svg" />
-    <img alt="GitHub contribution snake animation" src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-contribution-grid-snake.svg" />
-  </picture>
-
-</div>
-
 ## Beyond The Keyboard
 
 <table>
@@ -208,29 +177,6 @@ When coding and Linux have fully drained the battery, I am usually away from the
     </td>
   </tr>
 </table>
-
-## Connect
-
-<!-- Replace these placeholder URLs with your real links. -->
-<!-- LinkedIn: replace https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME -->
-<!-- YouTube: replace https://www.youtube.com/@YOUR_YOUTUBE_HANDLE -->
-<!-- Portfolio: replace https://YOUR_PORTFOLIO_WEBSITE -->
-<!-- Email: replace your.email@example.com -->
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME">
-    <img src="https://img.shields.io/badge/LinkedIn-020617?style=for-the-badge&logo=linkedin&logoColor=22c55e" alt="LinkedIn profile" />
-  </a>
-  <a href="https://www.youtube.com/@YOUR_YOUTUBE_HANDLE">
-    <img src="https://img.shields.io/badge/Fly%20Free%20Productions-020617?style=for-the-badge&logo=youtube&logoColor=22c55e" alt="Fly Free Productions YouTube channel" />
-  </a>
-  <a href="https://YOUR_PORTFOLIO_WEBSITE">
-    <img src="https://img.shields.io/badge/Portfolio-020617?style=for-the-badge&logo=firefoxbrowser&logoColor=22c55e" alt="Portfolio website" />
-  </a>
-  <a href="mailto:your.email@example.com">
-    <img src="https://img.shields.io/badge/Email-020617?style=for-the-badge&logo=protonmail&logoColor=22c55e" alt="Email Sahan Premarathna" />
-  </a>
-</p>
 
 ---
 
