@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Cybersecurity Lab</title>
+  <desc id="desc">Temporary dark cybersecurity lab gallery image.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020617"/>
+      <stop offset="0.55" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#064e3b"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#1f2937" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.6"/>
+  <rect x="100" y="125" width="1000" height="550" rx="24" fill="#020617" opacity="0.74" stroke="#22c55e" stroke-width="2"/>
+  <path d="M170 230h300M170 290h520M170 350h420M170 410h620M170 470h360" stroke="#22c55e" stroke-width="18" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="910" cy="330" r="82" fill="none" stroke="#22c55e" stroke-width="16"/>
+  <path d="M910 270v60l42 42" fill="none" stroke="#38bdf8" stroke-width="16" stroke-linecap="round"/>
+  <text x="100" y="735" fill="#e2e8f0" font-family="Consolas, monospace" font-size="42" font-weight="700">Cybersecurity Lab</text>
+  <text x="100" y="770" fill="#94a3b8" font-family="Consolas, monospace" font-size="22">Replace this with your own lab image</text>
+</svg>
