@@ -12,7 +12,7 @@
   <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:020617,35:0f172a,70:134e4a,100:22c55e&text=Sahan%20Premarathna&fontColor=e2e8f0&fontSize=46&fontAlignY=36&desc=Ultra%20%7C%20Cybersecurity%20%7C%20Code%20%7C%20Prompt%20Engineering&descAlignY=58&descSize=17&animation=fadeIn" alt="Sahan Premarathna profile header" />
 
   <a href="https://github.com/YOUR_GITHUB_USERNAME">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=21&duration=2600&pause=900&color=22C55E&center=true&vCenter=true&width=840&lines=Cybersecurity+First;Prompt+Engineer;Programmer+%26+Web+Developer;CTF+%26+Hack+The+Box+Learner;Linux+%2B+Web+Security;Wildlife+Filmmaker" alt="Typing animation for Sahan Premarathna" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=21&duration=2600&pause=900&color=22C55E&center=true&vCenter=true&width=840&lines=Cybersecurity+Fist;Prompt+Engineer;Programmer+%26+Web+Developer;CTF+%26+Hack+The+Box+Learner;Linux+%2B+Web+Security;Wildlife+Filmmaker" alt="Typing animation for Sahan Premarathna" />
   </a>
 
   <br />
