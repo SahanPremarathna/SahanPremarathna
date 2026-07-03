@@ -108,7 +108,7 @@ When coding and Linux have fully drained the battery, I am usually away from the
 <table>
   <tr>
     <td width="50%">
-      <img width="100%" src="assets/gallery/cybersecurity-lab.svg" alt="Cybersecurity lab gallery placeholder" />
+      <img width="100%" src="assets/gallery/labs.jpg" alt="Cybersecurity lab setup" />
     </td>
     <td width="50%">
       <img width="100%" src="assets/gallery/code-web-builds.svg" alt="Programming and web development gallery placeholder" />
@@ -116,10 +116,10 @@ When coding and Linux have fully drained the battery, I am usually away from the
   </tr>
   <tr>
     <td width="50%">
-      <img width="100%" src="assets/gallery/prompt-engineering.svg" alt="Prompt engineering gallery placeholder" />
+      <img width="100%" src="assets/gallery/prompteng.jpeg" alt="Prompt engineering workspace" />
     </td>
     <td width="50%">
-      <img width="100%" src="assets/gallery/wildlife-filmmaking.svg" alt="Wildlife filmmaking gallery placeholder" />
+      <img width="100%" src="assets/gallery/leopards.jfif" alt="Leopards wildlife photography" />
     </td>
   </tr>
 </table>
